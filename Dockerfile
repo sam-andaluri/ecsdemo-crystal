@@ -4,7 +4,7 @@ COPY . .
 RUN shards install
 RUN crystal build --release --link-flags="-static" src/server.cr
 
-FROM alpine:latest
+FROM alpine:3.15.4
 RUN apk -U add curl jq bash
 COPY --from=0 /src/startup.sh /startup.sh
 COPY --from=0 /src/server /server
